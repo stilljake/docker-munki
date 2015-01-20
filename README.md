@@ -30,10 +30,10 @@ Run the puppet agent on the Munki container to generate the cert (if you are not
 
 Set up SSL for Nginx:
 -----
-1.	The base nginx image doesn't have vi or nano installed, so you may need to install one:  
-`docker exec munki apt-get install -y nano`
-2.	Add some static content to nginx, such as a site_default file in /munki_repo/manifests/site_default.
-3.	Edit /etc/nginx/sites-enabled/munki-repo.conf to the contents of munki-repo-ssl.conf:  
+1.	Add some static content to nginx, such as a site_default file in /munki_repo/manifests/site_default.
+2.	For the following example, you'll probably need to edit munki-ssl-repo.conf to use the correct hostname.  "munki.pem" may be named "munki.domain.com" depending on your network setup. Make appropriate changes.  
+	Edit /etc/nginx/sites-enabled/munki-repo.conf to the contents of munki-repo-ssl.conf by using cat:  
+	`cat munki-repo-ssl.conf | docker exec -i munki sh -c 'cat > /etc/nginx/sites-enabled/munki-repo.conf'`  
 
 		# Munki Repo
 		server {
@@ -57,8 +57,12 @@ Set up SSL for Nginx:
 	`docker stop munki`  
 	`docker start munki`  
 5.	Now try accessing the nginx server via web browser at https://localhost/repo/manifests/site_default  
-	(Note that this will fail report an invalid CA if accessed from a machine that does not have the Puppet CA certificate in the browser store, but you can safely ignore that for now.)
-	
+	(Note that this will fail and report an invalid CA if accessed from a machine that does not have the Puppet CA certificate in the browser store, but you can safely ignore that for now.)
+
+Populate the Munki server (optional):
+-----
+
+
 Set up clients to use Munki with SSL:
 -----
 In the following steps, I'm using the default Mac sharing name of "mac.local", but you should change these to match the hostname of your client.  
