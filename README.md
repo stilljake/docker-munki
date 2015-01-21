@@ -1,6 +1,6 @@
 docker-munki-puppet
 -----
-A container that serves static files at http://munki/repo using nginx, with Puppet used for SSL certificates.
+A container that serves static files at https://munki/repo using nginx, with Puppet used for SSL certificates.
 
 nginx expects the munki repo content to be located at /munki_repo. Use a data container and the --volumes-from option to add files.
 
