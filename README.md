@@ -6,8 +6,8 @@ nginx expects the munki repo content to be located at /munki_repo. Use a data co
 
 # Using this container:
 
-1.	Setup up a [generic Puppetmaster](https://github.com/nmcspadden/docker-puppetmaster) container.
-2.	Alternatively, hook this up to [Puppetmaster + WHD](https://github.com/macadmins/docker-puppetmaster-whdcli) for policy-based autosigning based on inventory which autosigns Docker and virtual images.
+1.	Setup up a [generic Puppetmaster](https://registry.hub.docker.com/u/macadmins/puppetmaster/) container.
+2.	Alternatively, hook this up to [Puppetmaster + WHD](https://registry.hub.docker.com/u/macadmins/docker-puppetmaster-whdcli/) for policy-based autosigning based on WebHelpDesk inventory which autosigns Docker and virtual images.
 
 Create a Data Container:
 -----
