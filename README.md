@@ -12,7 +12,7 @@ nginx expects the munki repo content to be located at /munki_repo. Use a data co
 Create a Data Container:
 -----
 Create a data-only container to host the Munki repo:  
-	`docker run -d --name munki-data --entrypoint /bin/echo nmcspadden/munki-puppet Data-only container for munki`
+	`docker run -d --name munki-data --entrypoint /bin/echo macadmins/munki-puppet Data-only container for munki`
 
 Run the Munki container linked to Puppet:
 -----
@@ -21,7 +21,7 @@ If you have an existing Munki repo on the host, you can mount that folder direct
 `-v /path/to/munki/repo:/munki_repo`
 
 Otherwise, use --volumes-from the data container.  Use --link to link up the puppetmaster to the container:  
-	`docker run -d --name munki --volumes-from munki-data -p 80:80 -p 443:443 -h munki --link puppetmaster:puppet nmcspadden/munki-puppet`
+	`docker run -d --name munki --volumes-from munki-data -p 80:80 -p 443:443 -h munki --link puppetmaster:puppet macadmins/munki-puppet`
 
 Set up Puppet:
 ----
