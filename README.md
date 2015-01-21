@@ -18,7 +18,7 @@ Run the Munki container linked to Puppet:
 -----
 If you have an existing Munki repo on the host, you can mount that folder directly by using this option:
 
-`-v /path/to/munki/repo:/munki_repo/`
+`-v /path/to/munki/repo:/munki_repo`
 
 Otherwise, use --volumes-from the data container.  Use --link to link up the puppetmaster to the container:  
 	`docker run -d --name munki --volumes-from munki-data -p 80:80 -p 443:443 -h munki --link puppetmaster:puppet nmcspadden/munki-puppet`
