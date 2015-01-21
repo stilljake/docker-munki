@@ -66,7 +66,7 @@ The easiest way to populate the Munki server is to hook the munki-data volume up
 1.	`docker pull nmcspadden/smb-munki`
 2.	`docker run -d -p 445:445 --volumes-from munki-data --name smb nmcspadden/smb-munki`
 3.	You may need to change permissions on the mounted share, or change the samba.conf to allow for guest read/write permissions. One example:  
-	`chown -R nobody:nogroup /munki_repo`
+	`chown -R nobody:nogroup /munki_repo`  
 	`chmod -R ugo+rwx /munki_repo`
 4.	Populate the Munki repo using the usual tools - munkiimport, manifestutil, makecatalogs, etc.
 
