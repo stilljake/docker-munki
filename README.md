@@ -8,7 +8,6 @@ Creating a Data Container:
 ---
 Create a data-only container to host the Munki repo:  
 	`docker run -d --name munki-data --entrypoint /bin/echo nmcspadden/munki Data-only container for munki`
-```
 
 For more info on data containers read [Tom Offermann](http://www.offermann.us/2013/12/tiny-docker-pieces-loosely-joined.html)'s blog post and the [official documentation](https://docs.docker.com/userguide/dockervolumes/). 
 
