@@ -31,7 +31,7 @@ Run the puppet agent on the Munki container to generate the cert (if you are not
 Set up SSL for Nginx:
 -----
 1.	Add some static content to nginx, such as a site_default file in /munki_repo/manifests/site_default.
-2.	For the following example, you'll probably need to edit munki-ssl-repo.conf to use the correct hostname.  "munki.pem" may be named "munki.domain.com" depending on your network setup. Make appropriate changes.  
+2.	For the following example, you'll probably need to edit munki-ssl-repo.conf to use the correct hostname.  "munki.pem" may be named "munki.domain.com" depending on your network setup. Make appropriate changes.  Nginx will not work if any of the certs paths are invalid!
 	Edit /etc/nginx/sites-enabled/munki-repo.conf to the contents of munki-repo-ssl.conf by using cat:  
 	`cat munki-repo-ssl.conf | docker exec -i munki sh -c 'cat > /etc/nginx/sites-enabled/munki-repo.conf'`  
 
