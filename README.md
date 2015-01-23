@@ -18,7 +18,7 @@ If you have an existing Munki repo on the host, you can mount that folder direct
 `-v /path/to/munki/repo:/munki_repo`
 
 Otherwise, use --volumes-from the data container:  
-	`docker run -d --name munki --volumes-from munki-data -p 80:80 -p 443:443 -h munki nmcspadden/munki`
+	`docker run -d --name munki --volumes-from munki-data -p 80:80 -h munki nmcspadden/munki`
 	
 
 Populate the Munki server (optional):
