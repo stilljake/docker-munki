@@ -2,6 +2,8 @@ FROM nmcspadden/munki
 
 MAINTAINER Nick McSpadden nmcspadden@gmail.com
 
+ENV PUPPET_VERSION 3.7.3
+
 RUN apt-get update
 RUN apt-get install -y wget
 RUN apt-get install -y ca-certificates
