@@ -4,23 +4,18 @@ A container that serves static files at http://munki/repo using nginx.
 
 nginx expects the munki repo content to be located at /munki_repo. Use a data container and the --volumes-from option to add files.
 
-Creating a Data Container:
----
-Create a data-only container to host the Munki repo:  
-	`docker run -d --name munki-data --entrypoint /bin/echo nmcspadden/munki Data-only container for munki`
-
-For more info on data containers read [Tom Offermann](http://www.offermann.us/2013/12/tiny-docker-pieces-loosely-joined.html)'s blog post and the [official documentation](https://docs.docker.com/userguide/dockervolumes/). 
 
 Run the Munki container:
 -----
-If you have an existing Munki repo on the host, you can mount that folder directly by using this option instead of --volumes-from:
+You need to have an existing Munki repo on the host, you can mount that folder directly by using the -v flag:
 
-`-v /path/to/munki/repo:/munki_repo`
-
-Otherwise, use --volumes-from the data container:  
-	`docker run -d --name munki --volumes-from munki-data -p 80:80 -h munki nmcspadden/munki`
-	
-
+```
+docker run -d \
+--name munki \
+-v /path/to/munki/repo:/munki_repo \
+-p 80:80 \
+stilljake/munki
+```
 Populate the Munki server (optional):
 -----
 The easiest way to populate the Munki server is to hook the munki-data volume up to a Samba container and share it out to a Mac, using my [SMB-Munki container](https://registry.hub.docker.com/u/nmcspadden/smb-munki/):  
